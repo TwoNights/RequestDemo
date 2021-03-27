@@ -9,3 +9,7 @@ iOS13.0以上系统
 
 ## 编码环境
 采用swift5编码，需使用Xcode11以上编译器。
+
+## Tips
+项目Podfile源为https://mirrors.bfsu.edu.cn/git/CocoaPods/Specs.git
+如需pod install请自行切换
