@@ -18,7 +18,6 @@ public extension UIView {
             height = newValue.height
         }
     }
-    
     /// SwifterSwift: Width of view.
     var width: CGFloat {
         get {
@@ -28,7 +27,6 @@ public extension UIView {
             frame.size.width = newValue
         }
     }
-    
     /// SwifterSwift: Height of view.
     var height: CGFloat {
         get {
@@ -38,8 +36,6 @@ public extension UIView {
             frame.size.height = newValue
         }
     }
-    
-    
     /// SwifterSwift: x origin of view.
     var x: CGFloat {
         get {
@@ -49,7 +45,6 @@ public extension UIView {
             frame.origin.x = newValue
         }
     }
-    
     /// SwifterSwift: y origin of view.
     var y: CGFloat {
         get {
@@ -59,7 +54,6 @@ public extension UIView {
             frame.origin.y = newValue
         }
     }
-    
     /// SwifterSwift: top of view.
     var top: CGFloat {
         get {
@@ -71,7 +65,6 @@ public extension UIView {
             self.frame = frame
         }
     }
-    
     /// SwifterSwift: left of view.
     var left: CGFloat {
         get {
@@ -83,7 +76,6 @@ public extension UIView {
             self.frame = frame
         }
     }
-    
     /// SwifterSwift: right of view.
     var right: CGFloat {
         get {
@@ -95,7 +87,6 @@ public extension UIView {
             self.frame = frame
         }
     }
-    
     /// SwifterSwift: bottom of view.
     var bottom: CGFloat {
         get {
@@ -107,7 +98,6 @@ public extension UIView {
             self.frame = frame
         }
     }
-    
     /// SwifterSwift: centerX of view.
     var centerX: CGFloat {
         get {
@@ -117,7 +107,6 @@ public extension UIView {
             self.center = CGPoint(x: newValue, y: self.center.x)
         }
     }
-    
     /// SwifterSwift: centerY of view.
     var centerY: CGFloat {
         get {

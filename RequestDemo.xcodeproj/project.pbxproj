@@ -17,6 +17,13 @@
 		CE47F7DF260F43FD00657CD0 /* UserDefaultKeyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F7DB260F43FD00657CD0 /* UserDefaultKeyHeader.swift */; };
 		CE47F7E0260F43FD00657CD0 /* DeviceSizeHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F7DC260F43FD00657CD0 /* DeviceSizeHeader.swift */; };
 		CE47F7E1260F43FD00657CD0 /* NotificationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F7DD260F43FD00657CD0 /* NotificationHeader.swift */; };
+		CE95572A260F5881006C3F7C /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955729260F5881006C3F7C /* Cache.swift */; };
+		CE955739260F78EA006C3F7C /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955736260F78EA006C3F7C /* ArrayExtensions.swift */; };
+		CE955759260F84C4006C3F7C /* LocalErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955758260F84C4006C3F7C /* LocalErrorCode.swift */; };
+		CE95575E260F84DC006C3F7C /* RequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE95575D260F84DC006C3F7C /* RequestModel.swift */; };
+		CE955768260F84F1006C3F7C /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955767260F84F1006C3F7C /* NetworkClient.swift */; };
+		CE955774260F8684006C3F7C /* TimeTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955773260F8684006C3F7C /* TimeTools.swift */; };
+		CE95577A260F86E3006C3F7C /* JsonTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE955779260F86E3006C3F7C /* JsonTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +59,13 @@
 		CE47F7DB260F43FD00657CD0 /* UserDefaultKeyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserDefaultKeyHeader.swift; path = CommonHeader/UserDefaultKeyHeader.swift; sourceTree = "<group>"; };
 		CE47F7DC260F43FD00657CD0 /* DeviceSizeHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceSizeHeader.swift; path = CommonHeader/DeviceSizeHeader.swift; sourceTree = "<group>"; };
 		CE47F7DD260F43FD00657CD0 /* NotificationHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationHeader.swift; path = CommonHeader/NotificationHeader.swift; sourceTree = "<group>"; };
+		CE955729260F5881006C3F7C /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		CE955736260F78EA006C3F7C /* ArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArrayExtensions.swift; path = Utills/FoundationExtend/ArrayExtensions.swift; sourceTree = "<group>"; };
+		CE955758260F84C4006C3F7C /* LocalErrorCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalErrorCode.swift; path = Network/LocalErrorCode/LocalErrorCode.swift; sourceTree = "<group>"; };
+		CE95575D260F84DC006C3F7C /* RequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestModel.swift; path = Network/RequestModel/RequestModel.swift; sourceTree = "<group>"; };
+		CE955767260F84F1006C3F7C /* NetworkClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkClient.swift; path = Network/NetworkClient/NetworkClient.swift; sourceTree = "<group>"; };
+		CE955773260F8684006C3F7C /* TimeTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TimeTools.swift; path = Utills/TimeTools/TimeTools.swift; sourceTree = "<group>"; };
+		CE955779260F86E3006C3F7C /* JsonTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JsonTool.swift; path = Utills/JsonTool/JsonTool.swift; sourceTree = "<group>"; };
 		CF9B1831C4967BC6247F9BD8 /* Pods_RequestDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D0DD8BC00638935AEC5B89 /* Pods-RequestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.release.xcconfig"; path = "Target Support Files/Pods-RequestDemo/Pods-RequestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		FD0127DD43AAB2259988A25C /* Pods-RequestDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.debug.xcconfig"; path = "Target Support Files/Pods-RequestDemo/Pods-RequestDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,10 +139,12 @@
 		CE47F760260F398C00657CD0 /* RequestDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CE47F761260F398C00657CD0 /* AppDelegate.swift */,
+				CE47F7FB260F519900657CD0 /* Network(网络请求) */,
+				CE47F7FA260F514200657CD0 /* DataManager(数据管理) */,
+				CE47F7D1260F412200657CD0 /* ModuleClass(模块) */,
 				CE47F7D4260F424600657CD0 /* CommonHeader(常量,枚举) */,
 				CE47F7D2260F415F00657CD0 /* Utills(工具类) */,
-				CE47F7D1260F412200657CD0 /* ModuleClass(模块) */,
-				CE47F761260F398C00657CD0 /* AppDelegate.swift */,
 				CE47F7B3260F3D7900657CD0 /* Resource(资源文件) */,
 				CE47F76F260F398E00657CD0 /* Info.plist */,
 			);
@@ -164,6 +180,7 @@
 		CE47F7D1260F412200657CD0 /* ModuleClass(模块) */ = {
 			isa = PBXGroup;
 			children = (
+				CE47F7F6260F4DF800657CD0 /* mainList */,
 			);
 			name = "ModuleClass(模块)";
 			sourceTree = "<group>";
@@ -171,6 +188,9 @@
 		CE47F7D2260F415F00657CD0 /* Utills(工具类) */ = {
 			isa = PBXGroup;
 			children = (
+				CE955778260F86A3006C3F7C /* JsonTool(Json转换工具) */,
+				CE955772260F866E006C3F7C /* TimeTools(时间工具类) */,
+				CE955733260F7896006C3F7C /* FoundationExtend(Foundation各种扩展) */,
 				CE47F7D3260F419200657CD0 /* UIkitExtend(UIkit扩展) */,
 			);
 			name = "Utills(工具类)";
@@ -193,6 +213,79 @@
 				CE47F7DB260F43FD00657CD0 /* UserDefaultKeyHeader.swift */,
 			);
 			name = "CommonHeader(常量,枚举)";
+			sourceTree = "<group>";
+		};
+		CE47F7F6260F4DF800657CD0 /* mainList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = mainList;
+			sourceTree = "<group>";
+		};
+		CE47F7FA260F514200657CD0 /* DataManager(数据管理) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955729260F5881006C3F7C /* Cache.swift */,
+			);
+			name = "DataManager(数据管理)";
+			sourceTree = "<group>";
+		};
+		CE47F7FB260F519900657CD0 /* Network(网络请求) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955757260F849F006C3F7C /* LocalErrorCode(自定义错误码) */,
+				CE955756260F8436006C3F7C /* RequestModel(请求模型) */,
+				CE955754260F83E2006C3F7C /* NetworkClient(管理器) */,
+			);
+			name = "Network(网络请求)";
+			sourceTree = "<group>";
+		};
+		CE955733260F7896006C3F7C /* FoundationExtend(Foundation各种扩展) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955736260F78EA006C3F7C /* ArrayExtensions.swift */,
+			);
+			name = "FoundationExtend(Foundation各种扩展)";
+			sourceTree = "<group>";
+		};
+		CE955754260F83E2006C3F7C /* NetworkClient(管理器) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955767260F84F1006C3F7C /* NetworkClient.swift */,
+			);
+			name = "NetworkClient(管理器)";
+			sourceTree = "<group>";
+		};
+		CE955756260F8436006C3F7C /* RequestModel(请求模型) */ = {
+			isa = PBXGroup;
+			children = (
+				CE95575D260F84DC006C3F7C /* RequestModel.swift */,
+			);
+			name = "RequestModel(请求模型)";
+			sourceTree = "<group>";
+		};
+		CE955757260F849F006C3F7C /* LocalErrorCode(自定义错误码) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955758260F84C4006C3F7C /* LocalErrorCode.swift */,
+			);
+			name = "LocalErrorCode(自定义错误码)";
+			sourceTree = "<group>";
+		};
+		CE955772260F866E006C3F7C /* TimeTools(时间工具类) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955773260F8684006C3F7C /* TimeTools.swift */,
+			);
+			name = "TimeTools(时间工具类)";
+			sourceTree = "<group>";
+		};
+		CE955778260F86A3006C3F7C /* JsonTool(Json转换工具) */ = {
+			isa = PBXGroup;
+			children = (
+				CE955779260F86E3006C3F7C /* JsonTool.swift */,
+			);
+			name = "JsonTool(Json转换工具)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -386,11 +479,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE955768260F84F1006C3F7C /* NetworkClient.swift in Sources */,
+				CE955739260F78EA006C3F7C /* ArrayExtensions.swift in Sources */,
+				CE95575E260F84DC006C3F7C /* RequestModel.swift in Sources */,
+				CE955759260F84C4006C3F7C /* LocalErrorCode.swift in Sources */,
 				CE47F7E1260F43FD00657CD0 /* NotificationHeader.swift in Sources */,
+				CE955774260F8684006C3F7C /* TimeTools.swift in Sources */,
 				CE47F7D6260F43E700657CD0 /* UIViewExtensions.swift in Sources */,
+				CE95577A260F86E3006C3F7C /* JsonTool.swift in Sources */,
 				CE47F7E0260F43FD00657CD0 /* DeviceSizeHeader.swift in Sources */,
 				CE47F762260F398C00657CD0 /* AppDelegate.swift in Sources */,
 				CE47F7DF260F43FD00657CD0 /* UserDefaultKeyHeader.swift in Sources */,
+				CE95572A260F5881006C3F7C /* Cache.swift in Sources */,
 				CE47F7DE260F43FD00657CD0 /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
