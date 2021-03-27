@@ -1,0 +1,79 @@
+
+excluded:  # 执行 linting 时忽略的路径。 优先级比 `included` 更高。
+  - Pods
+
+disabled_rules: # 执行时排除掉的规则
+  - notification_center_detachment #移除通知要在 'deinit'中
+  - function_parameter_count #函数参数个数 默认5warning 8error
+  - multiple_closures_with_trailing_closure #当函数有多个闭包时, 不建议使用尾随闭包语法
+  - identifier_name #命名规则,暂时屏蔽
+opt_in_rules: # some rules are only opt-in
+  - opening_brace # 右括号之前应有一个空格，并与声明在同一行
+  - unused_import # import 的文件要被使用 All imported modules should be required to make the file compile.
+
+unused_capture_list: error #
+syntactic_sugar: error #语法糖[Int] 代替Array
+implicitly_unwrapped_optional: error #避免隐式解析可选类型的使用
+redundant_string_enum_value: error  #在定义字符串枚举的时候, 当字符串枚举值等于枚举名称时，可以不用赋值
+trailing_comma: error # 数组最后一个元素后面有逗号
+implicit_getter: error # read-only参数不应该有getter方法
+statement_position: error #else and catch 应该与 } 在同一行，以空格间隔
+leading_whitespace: error #文件末尾不应该存在空格符
+control_statement: error #if while 等判断条件不要用括号 括起来
+weak_delegate: error #代理要设置为弱引用和上面的
+class_delegate_protocol: error  #delegate protocol 应该被设定为 class-only,才能被弱引用
+unused_closure_parameter: error #函数的参数必须被使用
+trailing_newline: error  #末尾空行
+vertical_whitespace: error #垂直方向上的空格行，限制为一行（注释除外）
+trailing_whitespace: error # 每一个空行不能有空格
+operator_whitespace: error #当定义空格操作符的时候，被定义的名字或类型两边应该各有一个单行空格操作符
+closure_parameter_position: error #闭包参数位置， 闭包参数应该和大括号左边在同一行
+redundant_void_return: error #在不必要的时候， 不需要写 ->() and -> Void
+mark: error # //MARK: -
+redundant_optional_initialization: error # 默认值赋值为nil
+return_arrow_whitespace: error # -> 前后要有空格
+unused_optional_binding: error #在使用if判断某变量是否为nil的时候, 不建议使用下划线(_)
+force_unwrapping: error #避免强制解包
+force_cast: error # 类型判断,这里表示强解类型警告 as! Int
+force_try: warning # 对会抛出异常(throws)的方法,不建议try，强解
+trailing_semicolon: error #末尾跟逗号
+legacy_constructor: error #使用 swift 提供的 struct 构造函数， 避免使用 遗留的构造函数 比如 CGPointMake(10, 10)
+no_space_in_method_call: error #不要在方法名称和括号之间添加空格
+empty_count: error #建议使用isEmpty判断,而不是使用count==0判断
+opening_brace: error #大括号之前应该有一个空格,且与声明在同一行
+statement_position: error #这里主要指的是 else 和 catch 前面要加一个空格， 也不能大于1个空格
+colon: error #冒号右侧 有且只有一个空格
+comma: error #逗号  [a, b, c, d] 后面必须有一个空格, 前面不要空格
+prohibited_interface_builder: error #禁止用interface Builder 创建视图
+protocol_property_accessors_order: error #在协议中声明属性  要按顺序先写 get set方法
+
+type_name:  #类型名应该只包含字母数字字符， 并且以大写字母开头，长度在3-40个字符
+ min_length: 3 # 只是警告
+ max_length: # 警告和错误
+  warning: 10
+  error: 25
+  excluded: #排除 不某些名字不受该规则控制
+
+cyclomatic_complexity:
+  warning: 15
+  error: 20 #代码复杂度,默认为20，循环复杂度。函数体的复杂度的限制，这个属性主要约束条件句、循环句中的循环嵌套问题， 当嵌套太多的循环时，则会触发swiftlint中的warning和error，当达到10个循环嵌套时就会报warning，达到20个循环嵌套时就会报error
+
+line_length:  # 单行代码长度,默认error 120
+ warning: 300
+ error: 500
+
+file_length:  # 文件长度
+ warning: 1000
+ error: 1200
+
+function_body_length: # 函数体长度
+  warning: 100
+  error: 150
+
+large_tuple : #元组成员
+  warning: 3
+  error: 4
+
+type_body_length:
+  warning: 300
+  error: 200
