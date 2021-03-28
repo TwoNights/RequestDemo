@@ -15,4 +15,6 @@ target 'RequestDemo' do
   pod 'Eddid-ESPullToRefresh'
   #Tosat弹框
   pod 'Toast-Swift'
+  #RxSwift
+  pod 'RxSwift'
 end
