@@ -63,22 +63,7 @@ class MainListController: UIViewController {
         // UI配置
         configUI()
         // 开启请求
-        viewModel.start { [weak self] (_ reponse, _ errorMsg) in
-            switch reponse {
-            case .fail:
-                self?.topLabel.backgroundColor = .red
-                self?.topLabel.text = "刷新失败,\(errorMsg ?? "")"
-            case .success:
-                self?.topLabel.backgroundColor = .green
-                self?.topLabel.text =  "请求成功"
-            default:
-                break
-            }
-            self?.tableView.endUpdates()
-            self?.tableView.reloadData()
-            self?.tableView.stopHeaderRefreshing()
-            self?.tableView.stopFooterRefreshing()
-        }
+        startRequest()
     }
     // =================================================================
     //                              私有方法
@@ -110,6 +95,25 @@ class MainListController: UIViewController {
             maker.top.equalTo(switchButton.snp_bottomMargin)
             maker.left.right.equalToSuperview()
             maker.bottom.equalTo(bottomLayoutGuide.snp.top)
+        }
+    }
+    /// 开始请求数据
+    private func startRequest() {
+        viewModel.start { [weak self] (_ reponse, _ errorMsg) in
+            switch reponse {
+            case .fail:
+                self?.topLabel.backgroundColor = .red
+                self?.topLabel.text = "刷新失败,\(errorMsg ?? "")"
+            case .success:
+                self?.topLabel.backgroundColor = .green
+                self?.topLabel.text =  "请求成功"
+            default:
+                break
+            }
+            self?.tableView.endUpdates()
+            self?.tableView.reloadData()
+            self?.tableView.stopHeaderRefreshing()
+            self?.tableView.stopFooterRefreshing()
         }
     }
 }
