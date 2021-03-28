@@ -148,8 +148,7 @@ class MainListViewModel {
     /// 加载更多数据
     func loadMoreData() {
         if showHistory == true {
-            if let array = HistoryCache.readData(), let lastContent = historyArray.last?.content {
-                let oldArray = [HistoryModel]()
+            if let array = HistoryCache.readData(), array.isEmpty == false, let lastContent = historyArray.last?.content {
                 var lastIndex = 0
                 for (idx, string) in array.enumerated() where string.contains(lastContent) {
                     lastIndex = idx
