@@ -174,7 +174,7 @@ class MainListViewModel {
     // MARK: - 私有方法
     /// 网络请求
     private func netRequest() {
-        NetworkClient.request(apiModel: MainListApi().requestModel) { (_ responseData) in
+        NetworkClient.request(apiModel: MainListApi()) { (_ responseData) in
             self.addHistoryModel(msg: responseData.message, isSuccess: responseData.errorCode == nil)
             self.requestClosures?(responseData.errorCode == nil ? .success : .fail, responseData.message)
             if let dict = responseData.json, responseData.errorCode == nil {

@@ -5,26 +5,20 @@
 //  Created by Leslie on 2021/3/27.
 //
 import Alamofire
-/**
- 请求基础类,请在组合中自定义部分属性
- */
-struct RequestModel {
-    var url: String
-    var type: HTTPMethod = .get
-    var parameter: [String: Any]?
-    var header: HTTPHeaders = CommonHeader.gainCommonHeader()
-    /// 自定义构造方法
-    /// - Parameters:
-    ///   - urlString: 网址
-    ///   - requestType: 请求类型,默认post
-    ///   - param: 参数
-    ///   - headerDict: 请求头
-    init(urlString: String, requestType: HTTPMethod = .get, param: [String: Any]? = nil, headerDict: HTTPHeaders = CommonHeader.gainCommonHeader()) {
-        url = urlString
-        type = requestType
-        parameter = param
-        header = headerDict
-    }
+// =================================================================
+//                          基础协议
+// =================================================================
+// MARK: - 基础协议
+protocol RequestModelProtocol {
+    func getUrl() -> String
+    func getRequestType() -> HTTPMethod
+    func getParameter() -> [String: Any]?
+    func getHeader() -> HTTPHeaders
+}
+extension RequestModelProtocol {
+    func getRequestType() -> HTTPMethod {.get}
+    func getParameter() -> [String: Any]? {nil}
+    func getHeader() -> HTTPHeaders {CommonHeader.gainCommonHeader()}
 }
 /// 通用Header
 struct CommonHeader {
@@ -37,9 +31,10 @@ struct CommonHeader {
         return shared.header
     }
 }
-/// MainList
-struct MainListApi {
-    var requestModel: RequestModel {
-        return RequestModel(urlString: "https://api.github.com")
-    }
+// =================================================================
+//                          MainList
+// =================================================================
+// MARK: - MainList
+struct MainListApi: RequestModelProtocol {
+    func getUrl() -> String {"https://api.github.com"}
 }

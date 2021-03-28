@@ -36,11 +36,11 @@ extension NetworkClient {
     ///   - holder: 请求持有者,并在持有者deinit方法中执行cancelTask方法.如果为nil,则持有者被销毁时不会主动cancel请求.
     ///   - backTask: 后台任务,超长超时时间
     ///   - handler: 回调
-    public static func request(apiModel: RequestModel, handler: @escaping (ResponseData) -> Void) {
+    public static func request(apiModel: RequestModelProtocol, handler: @escaping (ResponseData) -> Void) {
         // 当前时间戳
         let time = TimeTools.currentTimeString()
         // 发起请求
-        shared.seesion.request(apiModel.url, method: apiModel.type, parameters: apiModel.parameter, encoding: URLEncoding.default, headers: apiModel.header).responseJSON { (response) in
+        shared.seesion.request(apiModel.getUrl(), method: apiModel.getRequestType(), parameters: apiModel.getParameter(), encoding: URLEncoding.default, headers: apiModel.getHeader()).responseJSON { (response) in
             // 回调数据解析
             var result = ResponseData()
             switch response.result {
@@ -53,7 +53,7 @@ extension NetworkClient {
             // 控制台打印错误日志
             if result.errorCode != nil {
                 let nowTime = Date().timeIntervalSince1970 * 1000
-                print("message:\(result.message) code:\(result.errorCode ?? 0) url:\(apiModel.url)  parameter:\(apiModel.parameter) header:\(apiModel.header ) 耗时:\(Int(nowTime - Double(time)!))ms")
+                print("message:\(result.message) code:\(result.errorCode ?? 0) url:\(apiModel.getUrl())  parameter:\(apiModel.getParameter()) header:\(apiModel.getHeader() ) 耗时:\(Int(nowTime - Double(time)!))ms")
             }
             #endif
             // 回调
