@@ -11,7 +11,7 @@ import Alamofire
 struct RequestModel {
     var url: String
     var type: HTTPMethod = .get
-    var parameter: [String: Any] = [String: Any]()
+    var parameter: [String: Any]?
     var header: HTTPHeaders = CommonHeader.gainCommonHeader()
     /// 自定义构造方法
     /// - Parameters:
@@ -19,7 +19,7 @@ struct RequestModel {
     ///   - requestType: 请求类型,默认post
     ///   - param: 参数
     ///   - headerDict: 请求头
-    init(urlString: String, requestType: HTTPMethod = .get, param: [String: Any], headerDict: HTTPHeaders = CommonHeader.gainCommonHeader()) {
+    init(urlString: String, requestType: HTTPMethod = .get, param: [String: Any]? = nil, headerDict: HTTPHeaders = CommonHeader.gainCommonHeader()) {
         url = urlString
         type = requestType
         parameter = param
@@ -35,5 +35,11 @@ struct CommonHeader {
     /// 获取通用header
     static func gainCommonHeader() -> HTTPHeaders {
         return shared.header
+    }
+}
+/// MainList
+struct MainListApi {
+    var requestModel: RequestModel {
+        return RequestModel(urlString: "https://api.github.com")
     }
 }

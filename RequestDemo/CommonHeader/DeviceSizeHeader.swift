@@ -24,12 +24,15 @@ let screenTrueWidth = screenWidth * UIScreen.main.scale
 let screenTrueHeight = screenHeight * UIScreen.main.scale
 /// 状态栏高度
 let safeBottomHeight = isFullScreen ? 15.0 : 0.0
-
 /// 全面屏判断(注意不要在window赋值之前使用)
 var isFullScreen: Bool {
-    let window: UIWindow = UIApplication.shared.windows.first { $0.isKeyWindow } ?? UIWindow(frame: UIScreen.main.bounds)
+    let window: UIWindow = getKeyWindow() ?? UIWindow(frame: UIScreen.main.bounds)
     if window.safeAreaInsets.left > 0 || window.safeAreaInsets.bottom > 0 {
         return true
     }
     return false
+}
+/// 获取keyWindow
+func getKeyWindow() -> UIWindow? {
+    return (UIApplication.shared.delegate as? AppDelegate)?.window
 }
