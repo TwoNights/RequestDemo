@@ -17,4 +17,6 @@ target 'RequestDemo' do
   pod 'Toast-Swift'
   #RxSwift
   pod 'RxSwift'
+  #RxCocoa
+  pod 'RxCocoa'
 end

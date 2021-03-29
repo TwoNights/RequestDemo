@@ -6,6 +6,8 @@
 //
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 enum ResponseType {
     case success
     case fail
@@ -24,6 +26,8 @@ class MainListViewModel {
     //                              属性列表
     // =================================================================
     // MARK: - 属性列表
+    /// 公开数据源
+    let dataObserver = BehaviorRelay<[MainListModelProtocol]>(value: [MainListModelProtocol]())
     /// 单页数据大小
     private var pageSize: UInt = 10
     /// 回调方法
@@ -119,15 +123,12 @@ class MainListViewModel {
             self.netRequest()
         })
     }
-    /// 读取模型数据源
-    func readModelArray() -> [MainListModelProtocol]? {
-        var array: [MainListModelProtocol]?
-        array = showHistory ? historyArray : mainListArray
-        return array
-    }
+
     /// 数据源切换
     func switchShowModel() {
         showHistory.toggle()
+        let array: [MainListModelProtocol]? = showHistory ? historyArray : mainListArray
+        dataObserver.accept(array ?? [MainListModelProtocol]())
     }
     /// 刷新数据
     func refreshData() {
@@ -160,6 +161,7 @@ class MainListViewModel {
                     return HistoryModel(title: stringArray[0, true] ?? "", content: stringArray[1, true] ?? "", isSuccess: stringArray[3, true] == "1")
                 }
                 historyArray.append(contentsOf: modelArray)
+                dataObserver.accept(historyArray)
                 requestClosures?(.local, nil)
             }
         } else {
@@ -224,6 +226,9 @@ class MainListViewModel {
             self.mainPage += 1
             // 主线程执行回调
             DispatchQueue.main.async {
+                if !self.showHistory {
+                    self.dataObserver.accept(self.mainListArray ?? [MainListModelProtocol]())
+                }
                 self.requestClosures?(isLocal ? .local : .success, nil)
             }
         }
@@ -252,6 +257,9 @@ class MainListViewModel {
             }
             // 保存
             HistoryCache.saveData(object: stringArray)
+        }
+        if showHistory {
+            dataObserver.accept(historyArray)
         }
     }
 }

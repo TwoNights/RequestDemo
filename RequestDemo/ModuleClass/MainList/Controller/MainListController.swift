@@ -7,20 +7,24 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+
 class MainListController: UIViewController {
     // =================================================================
     //                              属性列表
     // =================================================================
     // MARK: - 属性列表
+    private let disposeBag = DisposeBag()
     /// tableView
     private lazy var tableView: UITableView = {
         // 没导入约束库,暂时用frame实现
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.rowHeight = 100
         tableView.estimatedRowHeight = 0
         tableView.showsVerticalScrollIndicator = false
         tableView.showsHorizontalScrollIndicator = false
+        tableView.register(MainListCell.self, forCellReuseIdentifier: MainListCellID)
         tableView.addRefreshHeader {
             self.viewModel.refreshData()
         }
@@ -47,7 +51,7 @@ class MainListController: UIViewController {
         switchButton.setTitle("点击显示最新列表数据", for: .selected)
         switchButton.titleLabel?.adjustsFontSizeToFitWidth = true
         switchButton.backgroundColor = .darkGray
-        switchButton.addTarget(self, action: #selector(switchButtonAction), for: .touchUpInside)
+//        switchButton.addTarget(self, action: #selector(switchButtonAction), for: .touchUpInside)
         switchButton.setTitleColor(.black, for: .normal)
         switchButton.setTitleColor(.black, for: .selected)
         return switchButton
@@ -62,6 +66,8 @@ class MainListController: UIViewController {
         super.viewDidLoad()
         // UI配置
         configUI()
+        // rx配置
+        configRx()
         // 开启请求
         startRequest()
     }
@@ -70,12 +76,26 @@ class MainListController: UIViewController {
     // =================================================================
     // MARK: - 私有方法
     /// 切换按钮点击事件
-    @objc private func switchButtonAction() {
+    private func switchButtonAction() {
         switchButton.isSelected.toggle()
         viewModel.switchShowModel()
-        tableView.endUpdates()
-        tableView.reloadData()
     }
+    //swiftlint:disable  unused_closure_parameter
+    /// Rx配置
+    private func configRx() {
+        switchButton.rx.tap.subscribe(onNext: { [weak self]_ in
+            self?.switchButtonAction()
+        }).disposed(by: disposeBag)
+        viewModel.dataObserver.bind(to: tableView.rx.items(cellIdentifier: MainListCellID, cellType: MainListCell.self)) { row, item, cell in
+            if self.switchButton.isSelected {
+                cell.updateUI(model: item as? HistoryModel ?? HistoryModel(title: "", content: "", isSuccess: false))
+            } else {
+                cell.updateUI(model: item as? MainListModel ?? MainListModel(title: "", content: ""))
+            }
+        }.disposed(by: disposeBag)
+    }
+    //swiftlint:enable  unused_closure_parameter
+
     /// UI布局初始化
     private func configUI() {
         view.addSubview(topLabel)
@@ -110,33 +130,8 @@ class MainListController: UIViewController {
             default:
                 break
             }
-            self?.tableView.endUpdates()
-            self?.tableView.reloadData()
             self?.tableView.stopHeaderRefreshing()
             self?.tableView.stopFooterRefreshing()
         }
-    }
-}
-// =================================================================
-//                    tableView代理/数据源
-// =================================================================
-// MARK: - tableView代理
-extension MainListController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.readModelArray()?.count ?? 0
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: MainListCellID) as? MainListCell ?? MainListCell(style: .subtitle, reuseIdentifier: MainListCellID)
-        if let modelArray = viewModel.readModelArray() {
-            if switchButton.isSelected {
-                cell.updateUI(model: modelArray[indexPath.row, true] as? HistoryModel ?? HistoryModel(title: "", content: "", isSuccess: false))
-            } else {
-                cell.updateUI(model: modelArray[indexPath.row, true] as? MainListModel ?? MainListModel(title: "", content: ""))
-            }
-        }
-        return cell
     }
 }
