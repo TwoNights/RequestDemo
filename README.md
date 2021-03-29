@@ -18,5 +18,8 @@ iOS13.0以上系统
 两种数据pageSize均为50
 
 ## Tips
-项目Podfile源为https://mirrors.bfsu.edu.cn/git/CocoaPods/Specs.git
+### 项目Podfile源为https://mirrors.bfsu.edu.cn/git/CocoaPods/Specs.git
 如需pod install请自行切换
+### main分支为普通版
+RxSwift是用RxSwift逐步替换改造的版本
+因RxSwift用的较少,理解上可能不够深,所以暂时两个版本都保留
