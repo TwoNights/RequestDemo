@@ -29,7 +29,7 @@ class MainListViewModel {
     /// 公开数据源
     let dataObserver = BehaviorRelay<[MainListModelProtocol]>(value: [MainListModelProtocol]())
     /// 单页数据大小
-    private var pageSize: UInt = 10
+    private var pageSize: UInt = 50
     /// 回调方法
     private var requestClosures: RequestClosures?
     /// 定时器
@@ -213,7 +213,7 @@ class MainListViewModel {
             // 赋值
             let startIndex = self.mainPage * self.pageSize
             _ = dict.keys.enumerated().map { (idx, key) in
-                if idx >= startIndex && idx < self.pageSize * (self.mainPage + 1) {
+                if idx >= startIndex && (idx - Int(startIndex)) < array.count && idx < self.pageSize * (self.mainPage + 1) {
                     array[idx - Int(startIndex)] = MainListModel(title: key, content: dict[key] as? String ?? "")
                 }
             }
