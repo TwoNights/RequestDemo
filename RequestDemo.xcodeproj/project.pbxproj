@@ -30,7 +30,6 @@
 		CE9557E2260FD4A2006C3F7C /* MainListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9557E1260FD4A2006C3F7C /* MainListModel.swift */; };
 		CE9557E7260FE2A7006C3F7C /* MainListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9557E6260FE2A7006C3F7C /* MainListController.swift */; };
 		CE9557EC260FE2C5006C3F7C /* MainListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9557EB260FE2C5006C3F7C /* MainListViewModel.swift */; };
-		CE9557F2261004C5006C3F7C /* GCDTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE9557F1261004C5006C3F7C /* GCDTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		CE9557E1260FD4A2006C3F7C /* MainListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainListModel.swift; path = ModuleClass/MainList/Model/MainListModel.swift; sourceTree = "<group>"; };
 		CE9557E6260FE2A7006C3F7C /* MainListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainListController.swift; path = ModuleClass/MainList/Controller/MainListController.swift; sourceTree = "<group>"; };
 		CE9557EB260FE2C5006C3F7C /* MainListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainListViewModel.swift; path = ModuleClass/MainList/ViewModel/MainListViewModel.swift; sourceTree = "<group>"; };
-		CE9557F1261004C5006C3F7C /* GCDTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GCDTimer.swift; path = Utills/GCDTimer/GCDTimer.swift; sourceTree = "<group>"; };
 		CF9B1831C4967BC6247F9BD8 /* Pods_RequestDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RequestDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D0DD8BC00638935AEC5B89 /* Pods-RequestDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.release.xcconfig"; path = "Target Support Files/Pods-RequestDemo/Pods-RequestDemo.release.xcconfig"; sourceTree = "<group>"; };
 		FD0127DD43AAB2259988A25C /* Pods-RequestDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RequestDemo.debug.xcconfig"; path = "Target Support Files/Pods-RequestDemo/Pods-RequestDemo.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 		CE47F7D2260F415F00657CD0 /* Utills(工具类) */ = {
 			isa = PBXGroup;
 			children = (
-				CE9557F026100481006C3F7C /* GCDTimer(定时器) */,
 				CE9557A4260FCC8F006C3F7C /* UICommon(通用UI视图) */,
 				CE955778260F86A3006C3F7C /* JsonTool(Json转换工具) */,
 				CE955772260F866E006C3F7C /* TimeTools(时间工具类) */,
@@ -363,14 +360,6 @@
 				CE9557E1260FD4A2006C3F7C /* MainListModel.swift */,
 			);
 			name = Model;
-			sourceTree = "<group>";
-		};
-		CE9557F026100481006C3F7C /* GCDTimer(定时器) */ = {
-			isa = PBXGroup;
-			children = (
-				CE9557F1261004C5006C3F7C /* GCDTimer.swift */,
-			);
-			name = "GCDTimer(定时器)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,7 +562,6 @@
 				CE9557C1260FCD1D006C3F7C /* Toast.swift in Sources */,
 				CE955774260F8684006C3F7C /* TimeTools.swift in Sources */,
 				CE9557BB260FCD14006C3F7C /* RefreshFooter.swift in Sources */,
-				CE9557F2261004C5006C3F7C /* GCDTimer.swift in Sources */,
 				CE47F7D6260F43E700657CD0 /* UIViewExtensions.swift in Sources */,
 				CE95577A260F86E3006C3F7C /* JsonTool.swift in Sources */,
 				CE47F7E0260F43FD00657CD0 /* DeviceSizeHeader.swift in Sources */,
