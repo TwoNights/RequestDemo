@@ -34,7 +34,7 @@ class MainListViewModel {
     /// 回调方法
     private var requestClosures: RequestClosures?
     /// 定时器
-    private var timer: Observable<Int>?
+    private var timer: GCDTimer?
     /// dateFormatter创建比较耗时,每次用同一个
     private lazy var timeFormatter: DateFormatter = {
         let timeFormatter = DateFormatter()
@@ -42,7 +42,6 @@ class MainListViewModel {
         timeFormatter.timeZone = TimeZone(secondsFromGMT: 8 * 60 * 60) ?? TimeZone.current
         return timeFormatter
     }()
-    private let disposeBag = DisposeBag()
     /// 展示状态[安全属性]
     private var showHistory: Bool {
         get {
@@ -121,10 +120,9 @@ class MainListViewModel {
         // 历史数据清除
         HistoryCache.saveData(object: [String]())
         // 开启定时
-        timer = Observable<Int>.interval(.milliseconds(5000), scheduler: MainScheduler.instance)
-        timer?.subscribe(onNext: { [weak self] (_ num) in
-            self?.netRequest()
-        }).disposed(by: disposeBag)
+        timer = GCDTimer(interval: 5, delaySecs: 5, action: {
+            self.netRequest()
+        })
     }
 
     /// 数据源切换
@@ -145,10 +143,9 @@ class MainListViewModel {
             analysisModel(dict: dict, isLocal: true)
         }
         // 开启定时
-        timer = Observable<Int>.interval(.milliseconds(5000), scheduler: MainScheduler.instance)
-        timer?.subscribe(onNext: { [weak self] (_ num) in
-            self?.netRequest()
-        }).disposed(by: disposeBag)
+        timer = GCDTimer(interval: 5, delaySecs: 5, action: {
+            self.netRequest()
+        })
     }
     /// 加载更多数据
     func loadMoreData() {
