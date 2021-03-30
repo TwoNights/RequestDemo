@@ -14,7 +14,6 @@ class MainListController: UIViewController {
     // MARK: - 属性列表
     /// tableView
     private lazy var tableView: UITableView = {
-        // 没导入约束库,暂时用frame实现
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.delegate = self
         tableView.dataSource = self

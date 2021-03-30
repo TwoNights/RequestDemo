@@ -11,14 +11,15 @@ enum ResponseType {
     case fail
     case local
 }
-/// 请求回调闭包
-typealias RequestClosures = (_ responseType: ResponseType, _ Msg: String?) -> Void
-/// 数据处理线程
-private let dataQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Data", attributes: .concurrent)
-/// 数据解析线程
-private let analysisQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Analysis")
 /// 历史数据分隔符
 private let historySperateLine = "historySperateLine"
+/// 请求回调闭包
+typealias RequestClosures = (_ responseType: ResponseType, _ Msg: String?) -> Void
+/// 数据解析线程
+private let analysisQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Analysis")
+/// 数据处理线程
+private let dataQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Data", attributes: .concurrent)
+
 class MainListViewModel {
     // =================================================================
     //                              属性列表
