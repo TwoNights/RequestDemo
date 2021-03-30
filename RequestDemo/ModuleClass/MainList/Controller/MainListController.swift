@@ -18,7 +18,6 @@ class MainListController: UIViewController {
     private let disposeBag = DisposeBag()
     /// tableView
     private lazy var tableView: UITableView = {
-        // 没导入约束库,暂时用frame实现
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
         tableView.rowHeight = 100
         tableView.estimatedRowHeight = 0

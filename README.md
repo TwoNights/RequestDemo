@@ -16,6 +16,9 @@ iOS13.0以上系统
 历史请求记录在内存中最大存储量设置为1千,本地化设置为5千
 接口返回数据是每次全量覆盖内存和磁盘的数据
 两种数据pageSize均为50
+## 数据读写安全
+通常是根据业务并发量来决定是否处理
+项目中处理只是作为演示
 
 ## Tips
 ### 项目Podfile源为https://mirrors.bfsu.edu.cn/git/CocoaPods/Specs.git

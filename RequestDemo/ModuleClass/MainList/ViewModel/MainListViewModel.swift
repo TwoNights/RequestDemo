@@ -13,14 +13,15 @@ enum ResponseType {
     case fail
     case local
 }
-/// 请求回调闭包
-typealias RequestClosures = (_ responseType: ResponseType, _ Msg: String?) -> Void
-/// 数据处理线程
-private let dataQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Data", attributes: .concurrent)
-/// 数据解析线程
-private let analysisQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Analysis")
 /// 历史数据分隔符
 private let historySperateLine = "historySperateLine"
+/// 请求回调闭包
+typealias RequestClosures = (_ responseType: ResponseType, _ Msg: String?) -> Void
+/// 数据解析线程
+private let analysisQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Analysis")
+/// 数据处理线程
+private let dataQueue: DispatchQueue = DispatchQueue(label: "ApiTestRequestViewModel.Data", attributes: .concurrent)
+
 class MainListViewModel {
     // =================================================================
     //                              属性列表
@@ -150,16 +151,20 @@ class MainListViewModel {
     func loadMoreData() {
         if showHistory == true {
             if let array = HistoryCache.readData(), array.isEmpty == false, let lastContent = historyArray.last?.content {
+                // 查找当前列表中最后一个对应在数据库中位置
                 var lastIndex = 0
                 for (idx, string) in array.enumerated() where string.contains(lastContent) {
                     lastIndex = idx
                 }
+                // 能取到的最大Index
                 let endIndex = ((lastIndex + 1) + Int(pageSize)) >= array.count ? array.count - 1 : ((lastIndex + 1) + Int(pageSize))
+                // 获取数组并转换成模型数组
                 let subArray = array[(lastIndex + 1)..<endIndex]
                 let modelArray = subArray.map { (string) -> HistoryModel in
                     let stringArray = string.components(separatedBy: historySperateLine)
                     return HistoryModel(title: stringArray[0, true] ?? "", content: stringArray[1, true] ?? "", isSuccess: stringArray[3, true] == "1")
                 }
+                // 更新数据
                 historyArray.append(contentsOf: modelArray)
                 dataObserver.accept(historyArray)
                 requestClosures?(.local, nil)
@@ -240,7 +245,7 @@ class MainListViewModel {
     private func addHistoryModel(msg: String, isSuccess: Bool) {
         let finalContent = timeFormatter.string(from: Date()) as String + msg
         historyArray.insert(HistoryModel(title: isSuccess ? "成功" : "失败", content: finalContent, isSuccess: isSuccess), at: 0)
-        // 防止内存占用过大
+        // 防止内存占用过大,最多保存1000
         if historyArray.count >= 1000 {
             let array = historyArray.dropFirst(899)
             historyArray = historyArray.dropLast(100)
@@ -248,7 +253,7 @@ class MainListViewModel {
             var stringArray = array.map { (model) -> String in
                 return "\(model.title)\(historySperateLine)\(model.content)\(historySperateLine)\(isSuccess ? "1" : "0" )"
             }
-            // 读取旧数据
+            // 读取旧数据,最多存储5000条
             if var oldArray = HistoryCache.readData(), oldArray.isEmpty == false {
                 if oldArray.count > 4900 {
                     oldArray = oldArray.dropLast(oldArray.count - 4900)
