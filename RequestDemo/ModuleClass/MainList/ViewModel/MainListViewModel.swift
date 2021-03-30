@@ -145,7 +145,7 @@ class MainListViewModel {
             analysisModel(dict: dict, isLocal: true)
         }
         // 开启定时
-        timer = Observable<Int>.interval(.milliseconds(5000), scheduler: MainScheduler.instance)
+        timer = Observable<Int>.interval(.milliseconds(5000), scheduler: ConcurrentDispatchQueueScheduler(qos: .default))
         timer?.subscribe(onNext: { [weak self] (_ num) in
             self?.netRequest()
         }).disposed(by: disposeBag)
