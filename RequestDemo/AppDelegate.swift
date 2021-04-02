@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func windowConfig() {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
+        window?.backgroundColor = .white
         let mainController = MainListController()
         window?.rootViewController = mainController
     }

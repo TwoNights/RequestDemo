@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A9977984A447DED696B1633 /* Pods_RequestDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9B1831C4967BC6247F9BD8 /* Pods_RequestDemo.framework */; };
+		66B20D082616A73400633FB3 /* Pods_RequestDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF9B1831C4967BC6247F9BD8 /* Pods_RequestDemo.framework */; };
 		CE47F762260F398C00657CD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F761260F398C00657CD0 /* AppDelegate.swift */; };
 		CE47F779260F398F00657CD0 /* RequestDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F778260F398F00657CD0 /* RequestDemoTests.swift */; };
 		CE47F784260F398F00657CD0 /* RequestDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47F783260F398F00657CD0 /* RequestDemoUITests.swift */; };
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A9977984A447DED696B1633 /* Pods_RequestDemo.framework in Frameworks */,
+				66B20D082616A73400633FB3 /* Pods_RequestDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,8 +384,8 @@
 				CE47F75A260F398C00657CD0 /* Sources */,
 				CE47F75B260F398C00657CD0 /* Frameworks */,
 				CE47F75C260F398C00657CD0 /* Resources */,
-				F40FEC7D75B89E2A8439463E /* [CP] Embed Pods Frameworks */,
 				CE47F7EB260F44DB00657CD0 /* SwiftLint */,
+				336F5B33A0B0FE4528910853 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -500,6 +500,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		336F5B33A0B0FE4528910853 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		55CE8642E453BC4A92A8CACA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -539,23 +556,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
-		};
-		F40FEC7D75B89E2A8439463E /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RequestDemo/Pods-RequestDemo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -670,7 +670,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -725,7 +725,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -742,13 +742,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W89TQ6NN7Z;
+				DEVELOPMENT_TEAM = L5DE8DUUC6;
 				INFOPLIST_FILE = RequestDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = newtype.RequestDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = eddid.RequestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -762,13 +763,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W89TQ6NN7Z;
+				DEVELOPMENT_TEAM = L5DE8DUUC6;
 				INFOPLIST_FILE = RequestDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = newtype.RequestDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = eddid.RequestDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -1,6 +1,5 @@
-source 'https://mirrors.bfsu.edu.cn/git/CocoaPods/Specs.git'
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '10.0'
+# platform :ios, '13.4'
 
 use_frameworks!
 

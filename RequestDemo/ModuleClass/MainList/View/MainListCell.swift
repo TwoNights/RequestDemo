@@ -71,12 +71,9 @@ class MainListCell: UITableViewCell, MainListCellProtocol {
     func updateUI<DataType>(model: DataType) where DataType: MainListModelProtocol {
         titleLabel.text = model.title
         contentLabel.text = model.content
-        if let history = model as? HistoryModel {
-            if history.isSuccess {
-                titleLabel.textColor = .black
-            } else {
-                titleLabel.textColor = .red
-            }
+        titleLabel.textColor = .black
+        if let history = model as? HistoryModel, !history.isSuccess {
+            titleLabel.textColor = .red
         }
     }
 }
